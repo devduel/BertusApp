@@ -1,36 +1,27 @@
 import 'package:flutter/material.dart';
 
+import 'package:bertus_app/pages/HomePage/home.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BertusApp',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Color.fromRGBO(0, 80, 155, 1.0),
+        accentColor: Color.fromRGBO(0, 80, 155, 0.9),
       ),
-      home: MyHomePage(title: 'BertusApp Flutter project'),
+      routes: {'/': (BuildContext context) => HomePage()},
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center());
   }
 }
