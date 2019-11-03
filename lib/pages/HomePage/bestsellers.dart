@@ -15,14 +15,12 @@ class Bestsellers extends StatelessWidget {
     var deviceSize = MediaQuery.of(context).size;
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(left: deviceSize.width * 0.05),
           child: Text(
             'Najczęściej kupowane',
-            textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey[800],
                 fontWeight: FontWeight.w900,
