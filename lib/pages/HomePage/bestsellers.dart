@@ -18,27 +18,29 @@ class Bestsellers extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: deviceSize.width * 0.05),
+          padding: EdgeInsets.only(
+            top: deviceSize.height * 0.02,
+            left: deviceSize.width * 0.05,
+          ),
           child: Text(
             'Najczęściej kupowane',
             style: TextStyle(
                 color: Colors.grey[800],
                 fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
                 fontFamily: 'Open Sans',
-                fontSize: deviceSize.height * 0.035),
+                fontSize: deviceSize.height * 0.03),
           ),
         ),
         Container(
           height: deviceSize.height * 0.2,
-          child: bestSellersView(products),
+          child: buildBestsellersView(products),
         ),
       ],
     );
   }
 }
 
-Widget bestSellersView(List<String> products) {
+Widget buildBestsellersView(List<String> products) {
   return Container(
     child: ListView.builder(
       scrollDirection: Axis.horizontal,

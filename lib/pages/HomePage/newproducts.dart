@@ -18,27 +18,31 @@ class NewProducts extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: deviceSize.width * 0.05),
+          padding: EdgeInsets.only(
+            top: deviceSize.height * 0.02,
+            left: deviceSize.width * 0.05,
+          ),
           child: Text(
             'Nowości',
             style: TextStyle(
                 color: Colors.grey[800],
                 fontWeight: FontWeight.w900,
-                fontStyle: FontStyle.italic,
                 fontFamily: 'Open Sans',
-                fontSize: deviceSize.height * 0.035),
+                fontSize: deviceSize.height * 0.03),
           ),
         ),
         Container(
-          height: deviceSize.height * 0.6,
-          child: newProductsView(context, products),
+          height: deviceSize.height * 0.5,
+          child: buildNewProductsView(context, products),
         ),
       ],
     );
   }
 }
 
-Widget newProductsView(BuildContext context, List<String> products) {
+Widget buildNewProductsView(BuildContext context, List<String> products) {
+  var deviceSize = MediaQuery.of(context).size;
+
   return MediaQuery.removePadding(
     context: context,
     removeTop: true,
@@ -51,9 +55,22 @@ Widget newProductsView(BuildContext context, List<String> products) {
             return Card(
               child: Text('Placeholder for More Products button'),
             );
-          } else {
-            return Card(child: Image.network(products[index]));
           }
+          return Card(
+            child: Column(
+              children: <Widget>[
+                Expanded(child: Image.network(products[index])),
+                Container(
+                  height: deviceSize.height * 0.005,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.0),
+                          bottomRight: Radius.circular(20.0))),
+                ),
+              ],
+            ),
+          );
         },
       ),
     ),
