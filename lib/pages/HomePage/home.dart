@@ -20,15 +20,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: buildAppBar(deviceSize),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          createAnnouncement(
-              'W dniu 1 sierpnia Hurtownia nieczynna. Przepraszamy.'),
-          Bestsellers(),
-          NewProducts(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            createAnnouncement(
+                'W dniu 1 sierpnia Hurtownia nieczynna. Przepraszamy.'),
+            Bestsellers(),
+            NewProducts(),
+          ],
+        ),
       ),
     );
   }

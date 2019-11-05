@@ -31,10 +31,7 @@ class NewProducts extends StatelessWidget {
                 fontSize: deviceSize.height * 0.03),
           ),
         ),
-        Container(
-          height: deviceSize.height * 0.5,
-          child: buildNewProductsView(context, products),
-        ),
+        buildNewProductsView(context, products),
       ],
     );
   }
@@ -48,6 +45,8 @@ Widget buildNewProductsView(BuildContext context, List<String> products) {
     removeTop: true,
     child: GridView.count(
       crossAxisCount: 2,
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
       children: List.generate(
         products.length,
         (index) {
