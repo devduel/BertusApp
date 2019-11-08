@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Bestsellers extends StatelessWidget {
   @override
@@ -46,7 +45,20 @@ Widget buildBestsellersView(List<String> products) {
       scrollDirection: Axis.horizontal,
       itemCount: products.length,
       itemBuilder: (BuildContext context, int index) {
-        return Card(child: Image.network(products[index]));
+        return GestureDetector(
+          child: Hero(
+            tag: 'imageHero' + index.toString(),
+            child: Material(
+              child: Card(
+                child: Image.network(products[index]),
+              ),
+              color: Colors.transparent,
+            ),
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, '/product');
+          },
+        );
       },
     ),
   );

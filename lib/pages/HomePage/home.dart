@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'bestsellers.dart';
 import 'newproducts.dart';
@@ -18,14 +17,14 @@ class _HomePageState extends State<HomePage> {
     var deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.grey[200],
       appBar: buildAppBar(deviceSize),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            createAnnouncement(
+            buildAnnouncement(
                 'W dniu 1 sierpnia Hurtownia nieczynna. Przepraszamy.'),
             Bestsellers(),
             NewProducts(),
