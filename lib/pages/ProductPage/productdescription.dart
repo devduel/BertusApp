@@ -8,7 +8,7 @@ Widget buildProductDescription(Size deviceSize) {
         child: Text('Opis',
             style: TextStyle(
                 color: Colors.grey[900],
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Open Sans',
                 fontSize: deviceSize.height * 0.03)),
       ),
@@ -17,7 +17,7 @@ Widget buildProductDescription(Size deviceSize) {
         softWrap: true,
         style: TextStyle(
             color: Colors.grey[700],
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
             fontFamily: 'Open Sans',
             fontSize: deviceSize.height * 0.025),
       ),

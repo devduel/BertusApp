@@ -1,3 +1,4 @@
+import 'package:bertus_app/pages/ProductsPage/products.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bertus_app/pages/HomePage/home.dart';
@@ -24,7 +25,8 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         '/': (BuildContext context) => HomePage(),
-        '/product': (BuildContext context) => ProductPage()
+        '/product': (BuildContext context) => ProductPage(),
+        '/products': (BuildContext context) => ProductsPage()
       },
     );
   }

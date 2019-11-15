@@ -24,7 +24,7 @@ class _ProductPageState extends State<ProductPage> {
     var deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.blue,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -56,16 +56,19 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 ),
               ]),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  children: <Widget>[
-                    buildProductInfo(deviceSize),
-                    SizedBox(
-                      height: deviceSize.height * 0.02,
-                    ),
-                    buildProductDescription(deviceSize),
-                  ],
+              Container(
+                color: Colors.grey[200],
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      buildProductInfo(deviceSize),
+                      SizedBox(
+                        height: deviceSize.height * 0.02,
+                      ),
+                      buildProductDescription(deviceSize),
+                    ],
+                  ),
                 ),
               )
             ],

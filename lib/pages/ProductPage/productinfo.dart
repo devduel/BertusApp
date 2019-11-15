@@ -25,7 +25,7 @@ Widget buildProductInfo(Size deviceSize) {
                     'Astra',
                     style: TextStyle(
                       color: Colors.grey[200],
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w400,
                       fontFamily: 'Open Sans',
                       fontSize: deviceSize.height * 0.025,
                     ),
@@ -37,7 +37,7 @@ Widget buildProductInfo(Size deviceSize) {
               'Piórnik dwukomorowy z wyposażeniem',
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Open Sans',
                 fontSize: deviceSize.height * 0.03,
               ),
@@ -64,7 +64,7 @@ Widget buildProductInfo(Size deviceSize) {
                           '3.49' + ' PLN',
                           style: TextStyle(
                             color: Colors.grey[200],
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Open Sans',
                             fontSize: deviceSize.height * 0.025,
                           ),
@@ -84,7 +84,7 @@ Widget buildProductInfo(Size deviceSize) {
                           '3.87' + ' PLN (z VAT)',
                           style: TextStyle(
                               color: Colors.grey[200],
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Open Sans',
                               fontSize: deviceSize.height * 0.025),
                         ),
@@ -108,7 +108,7 @@ Widget buildProductInfo(Size deviceSize) {
                           'op.',
                           style: TextStyle(
                               color: Colors.grey[200],
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Open Sans',
                               fontSize: deviceSize.height * 0.025),
                         ),
@@ -127,7 +127,7 @@ Widget buildProductInfo(Size deviceSize) {
                           'PK-2765',
                           style: TextStyle(
                               color: Colors.grey[200],
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Open Sans',
                               fontSize: deviceSize.height * 0.025),
                         ),

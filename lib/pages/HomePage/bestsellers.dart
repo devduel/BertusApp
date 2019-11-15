@@ -1,16 +1,11 @@
+import 'package:bertus_app/data/productdata.dart';
+import 'package:bertus_app/models/product.dart';
 import 'package:flutter/material.dart';
 
 class Bestsellers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> products = [
-      'https://eplecaki.pl/85596-thickbox_default/saszetka-piornik-vans-otw-pencil-pouch-black-czarny.jpg',
-      'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg',
-      'https://m.media-amazon.com/images/I/91PgpcLPc8L._SR500,500_.jpg',
-      'https://images-na.ssl-images-amazon.com/images/I/61qd5YbMRIL._SL1500_.jpg',
-      'https://ecsmedia.pl/c/zeszyt-w-kratke-a4-mix-kolorow-w-iext43297071.jpg',
-      'https://eplecaki.pl/85596-thickbox_default/saszetka-piornik-vans-otw-pencil-pouch-black-czarny.jpg'
-    ];
+    List<Product> products = ProductData.bestsellers;
     var deviceSize = MediaQuery.of(context).size;
 
     return Column(
@@ -25,41 +20,57 @@ class Bestsellers extends StatelessWidget {
             'Najczęściej kupowane',
             style: TextStyle(
                 color: Colors.grey[800],
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Open Sans',
                 fontSize: deviceSize.height * 0.03),
           ),
         ),
         Container(
-          height: deviceSize.height * 0.2,
-          child: buildBestsellersView(products),
+          height: deviceSize.height * 0.25,
+          child: buildBestsellersView(products, deviceSize),
         ),
       ],
     );
   }
 }
 
-Widget buildBestsellersView(List<String> products) {
-  return Container(
-    child: ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: products.length,
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          child: Hero(
-            tag: 'imageHero' + index.toString(),
-            child: Material(
-              child: Card(
-                child: Image.network(products[index]),
+Widget buildBestsellersView(List<Product> products, Size deviceSize) {
+  return ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: products.length,
+    itemBuilder: (BuildContext context, int index) {
+      return GestureDetector(
+        child: Hero(
+          tag: 'imageHero' + index.toString(),
+          child: Material(
+            child: Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: Stack(
+                children: <Widget>[
+                  Image.network(products[index].imagesUrls[0]),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: deviceSize.height * 0.005,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0))),
+                    ),
+                  )
+                ],
               ),
-              color: Colors.transparent,
             ),
+            color: Colors.transparent,
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/product');
-          },
-        );
-      },
-    ),
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, '/product');
+        },
+      );
+    },
   );
 }

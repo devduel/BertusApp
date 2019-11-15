@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class NewProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class NewProducts extends StatelessWidget {
             'Nowości',
             style: TextStyle(
                 color: Colors.grey[800],
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Open Sans',
                 fontSize: deviceSize.height * 0.03),
           ),
@@ -50,24 +52,85 @@ Widget buildNewProductsView(BuildContext context, List<String> products) {
         products.length,
         (index) {
           if (index == products.length - 1) {
-            return Card(
-              child: Text('Placeholder for More Products button'),
+            return GestureDetector(
+              child: Card(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: Stack(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/more_products.svg',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                color: Colors.black.withOpacity(0.7),
+                                child: Center(
+                                  child: Text(
+                                    'Zobacz więcej',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'Open Sans',
+                                        fontSize: deviceSize.height * 0.03),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: deviceSize.height * 0.005,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20.0),
+                            bottomRight: Radius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/products');
+              },
             );
           }
-          return Card(
-            child: Column(
-              children: <Widget>[
-                Expanded(child: Image.network(products[index])),
-                Container(
-                  height: deviceSize.height * 0.005,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0))),
+          return GestureDetector(
+            child: Material(
+              child: Card(
+                child: Column(
+                  children: <Widget>[
+                    Expanded(child: Image.network(products[index])),
+                    Container(
+                      height: deviceSize.height * 0.005,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0))),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+              color: Colors.transparent,
             ),
+            onTap: () {
+              Navigator.pushNamed(context, '/product');
+            },
           );
         },
       ),
