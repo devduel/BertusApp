@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:bertus_app/models/product.dart';
+import 'package:bertus_app/pages/ProductPage/product.dart';
+
 class ProductsPage extends StatelessWidget {
+  final List<Product> products;
+
+  ProductsPage({this.products});
+
   @override
   Widget build(BuildContext context) {
-    List<String> products = [
-      'https://static4.redcart.pl/templates/images/thumb/2732/1500/1500/pl/0/templates/images/products/2732/1eb63c25eac502b400a51370fceef292.jpg',
-      'https://plecak-tornister.pl/16263-large_default/plecak-simple-roses-z-roza-black-czarny.jpg',
-      'https://ecsmedia.pl/c/bee-bee-piornik-typu-kostka-flamingi-w-iext53073819.jpg',
-      'https://eplecaki.pl/85596-thickbox_default/saszetka-piornik-vans-otw-pencil-pouch-black-czarny.jpg',
-      'https://alledrogeria.pl/7714-large_default/saffron-neonowa-kredka-do-oczu-i-ust-neon-pencil.jpg',
-      'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg',
-      'https://static4.redcart.pl/templates/images/thumb/2732/1500/1500/pl/0/templates/images/products/2732/1eb63c25eac502b400a51370fceef292.jpg',
-      'https://plecak-tornister.pl/16263-large_default/plecak-simple-roses-z-roza-black-czarny.jpg',
-      'https://ecsmedia.pl/c/bee-bee-piornik-typu-kostka-flamingi-w-iext53073819.jpg',
-      'https://eplecaki.pl/85596-thickbox_default/saszetka-piornik-vans-otw-pencil-pouch-black-czarny.jpg',
-      'https://alledrogeria.pl/7714-large_default/saffron-neonowa-kredka-do-oczu-i-ust-neon-pencil.jpg',
-      'https://www.cultpens.com/imgs/products/cp/950_constW/CR64779~Cross-Classic-Century-Ballpoint-Pen-Brushed-Chrome_P1.jpg'
-    ];
-    var deviceSize = MediaQuery.of(context).size;
+    Size deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[50],
       appBar: buildAppBar(deviceSize),
       body: ListView.builder(
         itemCount: products.length,
@@ -36,24 +29,36 @@ class ProductsPage extends StatelessWidget {
                     Container(
                       width: deviceSize.width * 0.01,
                       decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0))),
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.0),
+                          bottomRight: Radius.circular(20.0),
+                        ),
+                      ),
                     ),
                     Container(
                         width: deviceSize.width * 0.2,
-                        child: Image.network(
-                          products[index],
-                          fit: BoxFit.fitHeight,
+                        child: Hero(
+                          tag: 'imageHero' + products[index].index,
+                          child: Image.network(
+                            products[index].imagesUrls[0],
+                            fit: BoxFit.fitHeight,
+                          ),
                         )),
-                    buildProductInfo(deviceSize),
+                    buildProductInfo(deviceSize, products[index]),
                   ],
                 ),
               ),
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/product');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductPage(
+                    product: products[index],
+                  ),
+                ),
+              );
             },
           );
         },
@@ -80,7 +85,7 @@ class ProductsPage extends StatelessWidget {
   }
 }
 
-Widget buildProductInfo(Size deviceSize) {
+Widget buildProductInfo(Size deviceSize, Product product) {
   return Expanded(
     child: Center(
       child: Padding(
@@ -88,7 +93,7 @@ Widget buildProductInfo(Size deviceSize) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Piórnik dwukomorowy z wyposażeniem',
+            Text(product.title,
                 style: TextStyle(
                   color: Colors.grey[800],
                   fontWeight: FontWeight.w400,
@@ -111,7 +116,7 @@ Widget buildProductInfo(Size deviceSize) {
                       width: deviceSize.width * 0.01,
                     ),
                     Text(
-                      '3.49' + ' PLN',
+                      product.price.toStringAsFixed(2) + ' PLN',
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontWeight: FontWeight.w400,
@@ -131,7 +136,9 @@ Widget buildProductInfo(Size deviceSize) {
                       width: deviceSize.width * 0.01,
                     ),
                     Text(
-                      '3.87' + ' PLN (z VAT)',
+                      ((product.price + product.price * 0.23)
+                              .toStringAsFixed(2)) +
+                          ' PLN (z VAT)',
                       style: TextStyle(
                           color: Colors.grey[700],
                           fontWeight: FontWeight.w400,

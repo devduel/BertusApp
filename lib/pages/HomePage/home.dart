@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'announcement.dart';
 import 'bestsellers.dart';
 import 'newproducts.dart';
-import 'announcement.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,21 +14,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var deviceSize = MediaQuery.of(context).size;
+    Size deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[50],
       appBar: buildAppBar(deviceSize),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            buildAnnouncement(
-                'W dniu 1 sierpnia Hurtownia nieczynna. Przepraszamy.'),
-            Bestsellers(),
-            NewProducts(),
-          ],
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              buildAnnouncement(
+                  'Nieczynne 1 sierpnia. Przepraszamy.', deviceSize),
+              Divider(),
+              Bestsellers(),
+              Divider(),
+              NewProducts(),
+            ],
+          ),
         ),
       ),
     );

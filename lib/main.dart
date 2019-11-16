@@ -1,10 +1,18 @@
-import 'package:bertus_app/pages/ProductsPage/products.dart';
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:bertus_app/models/products.dart';
 import 'package:bertus_app/pages/HomePage/home.dart';
+import 'package:bertus_app/pages/ProductsPage/products.dart';
 import 'package:bertus_app/pages/ProductPage/product.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      ChangeNotifierProvider(
+        builder: (context) => ProductsModel(),
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatefulWidget {
   @override

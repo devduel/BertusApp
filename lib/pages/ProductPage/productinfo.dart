@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget buildProductInfo(Size deviceSize) {
+import 'package:bertus_app/models/product.dart';
+
+Widget buildProductInfo(Size deviceSize, Product product) {
   return Card(
     elevation: 3.0,
     margin: EdgeInsets.all(0.0),
-    color: Colors.blue,
+    color: Colors.blueAccent,
     child: Center(
       child: Padding(
         padding: EdgeInsets.all(8.0),
@@ -22,7 +24,7 @@ Widget buildProductInfo(Size deviceSize) {
                     width: deviceSize.width * 0.01,
                   ),
                   Text(
-                    'Astra',
+                    product.manufacturer,
                     style: TextStyle(
                       color: Colors.grey[200],
                       fontWeight: FontWeight.w400,
@@ -34,7 +36,7 @@ Widget buildProductInfo(Size deviceSize) {
               ),
             ),
             Text(
-              'Piórnik dwukomorowy z wyposażeniem',
+              product.title,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
@@ -61,7 +63,7 @@ Widget buildProductInfo(Size deviceSize) {
                           width: deviceSize.width * 0.01,
                         ),
                         Text(
-                          '3.49' + ' PLN',
+                          product.price.toStringAsFixed(2) + ' PLN',
                           style: TextStyle(
                             color: Colors.grey[200],
                             fontWeight: FontWeight.w400,
@@ -81,7 +83,9 @@ Widget buildProductInfo(Size deviceSize) {
                           width: deviceSize.width * 0.01,
                         ),
                         Text(
-                          '3.87' + ' PLN (z VAT)',
+                          ((product.price + product.price * 0.23)
+                                  .toStringAsFixed(2)) +
+                              ' PLN (z VAT)',
                           style: TextStyle(
                               color: Colors.grey[200],
                               fontWeight: FontWeight.w400,
@@ -105,7 +109,7 @@ Widget buildProductInfo(Size deviceSize) {
                           width: deviceSize.width * 0.01,
                         ),
                         Text(
-                          'op.',
+                          product.unit,
                           style: TextStyle(
                               color: Colors.grey[200],
                               fontWeight: FontWeight.w400,
@@ -124,7 +128,7 @@ Widget buildProductInfo(Size deviceSize) {
                           width: deviceSize.width * 0.01,
                         ),
                         Text(
-                          'PK-2765',
+                          product.index,
                           style: TextStyle(
                               color: Colors.grey[200],
                               fontWeight: FontWeight.w400,
