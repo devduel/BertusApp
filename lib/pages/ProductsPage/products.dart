@@ -31,8 +31,8 @@ class ProductsPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
                           bottomLeft: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0),
                         ),
                       ),
                     ),
