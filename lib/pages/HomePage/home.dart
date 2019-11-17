@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'announcement.dart';
 import 'bestsellers.dart';
 import 'newproducts.dart';
+import 'package:bertus_app/pages/MenuPage/menu.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,7 +57,10 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MenuPage()));
+            },
             color: Colors.white,
           ),
         ],

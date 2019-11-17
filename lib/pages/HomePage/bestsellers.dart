@@ -18,18 +18,13 @@ class Bestsellers extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                left: deviceSize.width * 0.05,
-              ),
-              child: Text(
-                'Najczęściej kupowane',
-                style: TextStyle(
-                  color: Colors.grey[800],
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Open Sans',
-                  fontSize: deviceSize.height * 0.03,
-                ),
+            Text(
+              'Najczęściej kupowane',
+              style: TextStyle(
+                color: Colors.grey[1000],
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Open Sans',
+                fontSize: deviceSize.height * 0.035,
               ),
             ),
             Container(
